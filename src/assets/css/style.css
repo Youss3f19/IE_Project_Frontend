@@ -1,0 +1,230 @@
+@font-face {
+    font-family: 'Arima Madurai';
+    src: url('../assets/fonts/Arima\ Madurai.ttf') format('truetype');
+}
+
+
+.minH{
+    min-height: 62vh;
+  }
+
+.bg{
+    background-color: #007090;
+}
+body {
+    font-family: 'Arima Madurai', sans-serif;
+}
+/* Style global pour la barre de navigation */
+.change {
+    background-color: #FBFBFB !important   ;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); 
+}
+.text-change{
+    color: #007090 !important;
+}
+
+.navbar-brand img {
+    transition: transform 0.3s ease; 
+}
+
+.navbar-brand img:hover {
+    transform: scale(1.3); 
+}
+
+.nav-link {
+    font-size: 1.5rem;
+}
+
+.nav-link:hover {
+    color: #007090;
+}
+
+.nav-link.active {
+    font-weight: bold;
+}
+
+.dropdown-menu {
+    border-radius: 0.7rem; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 1); 
+}
+
+.dropdown-item:hover {
+    background-color: #dbdada; 
+}
+
+.dropdown-header {
+    color: #6c757d; 
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* Bouton "AddFile" */
+.btn-outline-dark {
+    transition: background-color 0.5s ease, color 0.3s ease;
+}
+
+.iset {
+    background-color: #007090;
+    color: white;
+    padding: 100px 0;
+    position: relative;
+    border-radius: 0 0 0 70%;
+    box-shadow: 0 4px 6px 5px rgba(0, 0, 0, 0.099); 
+
+}
+
+
+.iset .iset-text h1 {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.iset .iset-text p {
+    margin: 20px 0;
+    font-size: 1.1rem;
+}
+
+.iset .btn-warning {
+    color: white;
+    font-weight: bold;
+}
+
+.iset .img-fluid {
+    width: 73%;
+    max-width: 500px;
+    border-radius: 15px;
+}
+.isetCh {
+    background-color: #007090;
+    color: white;
+    padding: 100px 0;
+    position: relative;
+    border-radius: 0 70% 0 0;
+    box-shadow: 0 -4px 6px 0px rgba(0, 0, 0, 0.099); 
+
+}
+.isetCh .iset-text h1 {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.isetCh .iset-text p {
+    margin: 20px 0;
+    font-size: 1.1rem;
+}
+
+.isetCh .btn-warning {
+    color: white;
+    font-weight: bold;
+}
+
+.isetCh .img-fluid {
+    width: 74%;
+    max-width: 500px;
+    border-radius: 15px;
+}
+/********************************/
+
+
+
+/**********************/
+/*footer */
+.scaleLogo{
+    transition: all 0.2s ease;
+    
+}
+.scaleLogo:hover{
+    transform: scale(1.05);
+    color: #E4A11B !important ;
+}
+
+/*cads*/
+.card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    padding: 2px;
+    border-radius: 24px;
+    overflow: hidden;
+    line-height: 1.6;
+    transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 34px;
+    border-radius: 22px;
+    color: #ffffff;
+    overflow: hidden;
+    background: #ffffff;
+    transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  .content .heading {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1.3;
+    z-index: 1;
+    transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+    text-align: center;
+    padding-top: 110px;  }
+  
+  .content .para {
+    z-index: 1;
+    opacity: 0.8;
+    font-size: 18px;
+    transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  .card::before {
+    content: "";
+    position: absolute;
+    height: 160%;
+    width: 160%;
+    border-radius: inherit;
+    background: #007090;
+    background: linear-gradient(to right, #007090, #007090);
+    transform-origin: center;
+    animation: moving 4.8s linear infinite paused;
+    transition: all 0.88s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  .card:hover::before {
+    animation-play-state: running;
+    z-index: -1;
+    width: 20%;
+  }
+  
+  .card:hover .content .heading,
+  .card:hover .content .para {
+    color: #000000;
+  }
+  
+  .card:hover {
+    box-shadow: 0rem 6px 13px rgba(10, 60, 255, 0.1),
+      0rem 24px 24px rgba(10, 60, 255, 0.09),
+      0rem 55px 33px rgba(10, 60, 255, 0.05),
+      0rem 97px 39px rgba(10, 60, 255, 0.01), 0rem 152px 43px rgba(10, 60, 255, 0);
+    scale: 1.05;
+    color: #000000;
+  }
+  
+  @keyframes moving {
+    0% {
+      transform: rotate(0);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  

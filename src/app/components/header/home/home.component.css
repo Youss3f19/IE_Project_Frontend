@@ -1,0 +1,6 @@
+.bgFix{
+    background-image: url(../../../../assets/assets/images/bgFix.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    }
