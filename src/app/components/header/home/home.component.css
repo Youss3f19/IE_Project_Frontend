@@ -4,3 +4,21 @@
     background-attachment: fixed;
     background-size: cover;
     }
+
+
+/*animation*/
+@keyframes slideInFromBottom {
+    0% {
+            opacity: 0;
+            transform: translateY(30%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    }
+    
+.iset-text, .img-fluid {
+    animation: slideInFromBottom 1s ease-out;
+}
+/*------------------*/

@@ -1,8 +1,13 @@
+
+
 @font-face {
     font-family: 'Arima Madurai';
     src: url('../assets/fonts/Arima\ Madurai.ttf') format('truetype');
 }
 
+/*card animation */
+
+/*--------------*/
 
 .minH{
     min-height: 62vh;

@@ -13,6 +13,7 @@ import { ExamsComponent } from './components/header/exams/exams.component';
 import { LoginComponent } from './components/header/login/login.component';
 import { SignupComponent } from './components/header/signup/signup.component';
 import { ContactComponent } from './components/header/contact/contact.component';
+import { InViewDirective } from './directives/in-view.directive';
 
 @NgModule({
   declarations: [
@@ -25,13 +26,17 @@ import { ContactComponent } from './components/header/contact/contact.component'
     ExamsComponent,
     LoginComponent,
     SignupComponent,
-    ContactComponent
+    ContactComponent,
+    InViewDirective,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
