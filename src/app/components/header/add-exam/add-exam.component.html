@@ -1,0 +1,68 @@
+<div class="bg">
+<div class="container ">
+    <div class="row minH d-flex justify-content-center align-content-center">
+        <div class="col-12 col-md-8 col-lg-6  text-warning bg-dark rounded p-4 m-4" style="box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;">
+            <h1 class="text-center text-white">Add Exam</h1>
+            <form>
+
+                <div class="form-group">
+                    <label for="examName">Exam Title</label>
+                    <input type="text" class="form-control" id="examName" placeholder="Enter Exam Name">
+                </div>
+
+                <div class="form-group">
+                    <label>Subject</label>
+                    <input type="text" class="form-control" id="examName" placeholder="Enter Exam Name">
+                </div>
+
+                <div class="form-group">
+                    <label>Year</label>
+                    <input type="number" min="2010" max="2024" class="form-control" id="examYear" value="2024"
+                        onkeydown="return false;">
+                </div>
+
+                <div class="form-group">
+                    <label for="examName">Classe</label>
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="inputGroupSelect01">Choisir</label>
+                        <select class="form-select" id="inputGroupSelect01">
+                            <option>choisissez un classe</option>
+
+                            <optgroup label="1 ere anne">
+                                <option>1 ere IT</option>
+
+                            </optgroup>
+
+
+                            <optgroup label="2 eme">
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </optgroup>
+
+                            <optgroup label="3 eme">
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </optgroup>
+
+                        </select>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center" >
+                    <div class="dropBox d-flex flex-column align-items-center p-3">
+                        <div class="fs-3">Upload your Exam</div>
+                        <small>File should be an PDF</small>
+                        <div class="fs-4">Drop files here</div>
+                        <small>or</small>
+                        <input type="file" class=" fileBtn btn btn-warning">
+                    </div>
+    
+                </div>
+                
+                <button class="btn btn-warning w-100 mt-3">Add</button>
+            </form>
+        </div>
+    </div>
+</div>
+</div>

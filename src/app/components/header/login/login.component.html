@@ -8,7 +8,7 @@
         />
       </div>
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-        <form>
+        <form [formGroup]="loginForm">
           <div
             class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start"
           >
@@ -21,28 +21,51 @@
 
 
           <div data-mdb-input-init class="form-outline mb-4">
-            <label class="form-label ms-2" for="form3Example3">Email address</label>
+            <label class="form-label ms-2" for="form3Example3" >Email address</label>
 
             <input
               type="email"
               id="form3Example3"
               class="form-control form-control-lg"
               placeholder="Enter a valid email address"
+              name="email" 
+              formControlName="email"
+              [ngClass]="{'border-danger' : loginForm.get('email')?.touched && loginForm.get('email')?.invalid}"
+
             />
+
+            <div *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid" class="text-danger ms-2">
+              <div *ngIf="loginForm.get('email')?.errors?.['required']">Email is required.</div>
+              <div *ngIf="loginForm.get('email')?.errors?.['email']">Please enter a valid email address.</div>
+            </div>
+            
           </div>
 
           <div data-mdb-input-init class="form-outline mb-3">
-            <label class="form-label ms-2" for="form3Example4">Password</label>
+            <label class="form-label ms-2" for="form3Example4" >Password</label>
 
             <input
               type="password"
               id="form3Example4"
               class="form-control form-control-lg"
               placeholder="Enter password"
+              name="password"
+              formControlName="password"
+              [ngClass]="{'border-danger' : loginForm.get('password')?.touched && loginForm.get('password')?.invalid}"
+
             />
+            <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid" class="text-danger ms-2">
+              <div *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</div>
+              <div *ngIf="loginForm.get('password')?.errors?.['minlength']">
+                Password must be at least {{ loginForm.get('password')?.errors?.['minlength'].requiredLength }} characters long.
+              </div>
+            </div>
           </div>
 
-          
+          <div class="text-center text-danger">
+            <small>{{erreur}}</small>
+          </div>
+
 
           <div class="text-center text-lg-start mt-4 pt-2  d-flex flex-column align-items-center">
             <button
@@ -51,9 +74,12 @@
               data-mdb-ripple-init
               class="btn btn-lg btn-warning"
               style="padding-left: 2.5rem; padding-right: 2.5rem"
+              (click)="login()"
             >
               Login
             </button>
+
+
             <p class="small fw-bold mt-2 pt-1 mb-0">
               Don't have an account?
               <a [routerLink]="['/signup']" class="link-warning">Register</a>

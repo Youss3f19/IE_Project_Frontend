@@ -14,6 +14,12 @@ import { LoginComponent } from './components/header/login/login.component';
 import { SignupComponent } from './components/header/signup/signup.component';
 import { ContactComponent } from './components/header/contact/contact.component';
 import { InViewDirective } from './directives/in-view.directive';
+import {HttpClientModule} from '@angular/common/http';
+import { VerificationEmailComponent } from './components/header/verification-email/verification-email.component';
+import { ConfirmComponent } from './components/header/confirm/confirm.component';
+import { DashboardComponent } from './components/header/dashboard/dashboard.component';
+import { AddExamComponent } from './components/header/add-exam/add-exam.component';
+
 
 @NgModule({
   declarations: [
@@ -28,6 +34,11 @@ import { InViewDirective } from './directives/in-view.directive';
     SignupComponent,
     ContactComponent,
     InViewDirective,
+    VerificationEmailComponent,
+    ConfirmComponent,
+    DashboardComponent,
+    AddExamComponent,
+    
     
   ],
   imports: [
@@ -35,6 +46,8 @@ import { InViewDirective } from './directives/in-view.directive';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpClientModule,
+    
     
     
   ],
