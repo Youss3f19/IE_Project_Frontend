@@ -9,20 +9,27 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class HeaderComponent implements OnInit {
   isLoggedIn = false;
+  isAdmin = false;
 
   constructor(private usersService: UsersService , private router : Router) { }
-
+  
   ngOnInit(): void {
     this.usersService.isLoggedIn$.subscribe(
       (status: boolean) => {
         this.isLoggedIn = status;
       }
     );
+    this.usersService.isAdmin$.subscribe(isAdmin => {
+      this.isAdmin = isAdmin;  
+      console.log(this.isAdmin);
+      
+    });
   }
+
 
   logout(): void {
     this.usersService.logout();
-    this.router.navigate(['/home']);  
+    this.router.navigate(['/main/home']);  
 
       
   }

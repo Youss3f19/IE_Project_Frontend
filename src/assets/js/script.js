@@ -2,10 +2,10 @@
 
 $(window).scroll(function () {
 if ($(window).scrollTop()) {
-$(".navbar").addClass("change");
+$(".navAnimation").addClass("change");
 $(".text-light").addClass("text-change");
 } else {
-$(".navbar").removeClass("change");
+$(".navAnimation").removeClass("change");
 $(".text-light").removeClass("text-change");
 
 }
@@ -35,4 +35,6 @@ const observerCallback = (entries, observer) => {
   document.querySelectorAll('.cardAnimation').forEach(card => {
     observer.observe(card);  // Observe chaque carte
   });
+  
+
   

@@ -1,0 +1,138 @@
+<div class="container my-5 minH ">
+  <div class="row">
+    <div class="col-12 col-md-4 my-2">
+      <select class="form-select" aria-label="Default select example">
+        <option selected>Année</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+    </div>
+    <div class="col-12 col-md-4 my-2">
+      <select class="form-select" aria-label="Default select example">
+        <option selected>Matière</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+    </div>
+    <div class="col-12 col-md-4 my-2">
+      <select class="form-select" aria-label="Default select example">
+        <option selected>Type</option>
+        <option value="1">DS</option>
+        <option value="2">Examen</option>
+
+      </select>
+    </div>
+    <div class="row d-flex justify-content-end   ">
+      <div class="col-12 col-md-4 my-2 col-lg-3 my-3 ">
+        <div class="input-group mb-3 ms-4 ">
+          <span class="input-group-text" id="basic-addon1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+              viewBox="0 0 16 16">
+              <path
+                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+            </svg>
+          </span>
+          <input type="text" class="form-control" placeholder="Search" aria-label="Username"
+            aria-describedby="basic-addon1">
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+ 
+  <!--Cards-->
+  <div class="container">
+    <div class="row">
+      <div *ngFor="let item of exams"
+        class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 d-flex  my-3 d-flex justify-content-center  ">
+
+        <div class="cards p-3 " >
+          <div class="title">
+
+            <span>{{item.examTitle}}</span>
+
+            <p>{{item.subject}}</p>
+          </div>
+
+          <div class="action d-flex flex-column">
+            <button type="button" class="button" (click)="getExamById(item._id)">
+              <span class="button__text">Download</span>
+              <span class="button__icon">
+                <svg class="svg" data-name="Layer 2" id="bdd05811-e15d-428c-bb53-8661459f9307" viewBox="0 0 35 35"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M17.5,22.131a1.249,1.249,0,0,1-1.25-1.25V2.187a1.25,1.25,0,0,1,2.5,0V20.881A1.25,1.25,0,0,1,17.5,22.131Z">
+                  </path>
+                  <path
+                    d="M17.5,22.693a3.189,3.189,0,0,1-2.262-.936L8.487,15.006a1.249,1.249,0,0,1,1.767-1.767l6.751,6.751a.7.7,0,0,0,.99,0l6.751-6.751a1.25,1.25,0,0,1,1.768,1.767l-6.752,6.751A3.191,3.191,0,0,1,17.5,22.693Z">
+                  </path>
+                  <path
+                    d="M31.436,34.063H3.564A3.318,3.318,0,0,1,.25,30.749V22.011a1.25,1.25,0,0,1,2.5,0v8.738a.815.815,0,0,0,.814.814H31.436a.815.815,0,0,0,.814-.814V22.011a1.25,1.25,0,1,1,2.5,0v8.738A3.318,3.318,0,0,1,31.436,34.063Z">
+                  </path>
+                </svg>
+              </span>
+            </button>
+            <button type="button" class="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+              *ngIf="status" (click)="setSelectedExam(item._id,status == 'accepted' ? 'pend' : 'accept')">
+              <span class="button__text">{{status == 'accepted' ? 'pend' : 'accept'}}</span>
+              <span class="button__icon pt-2">
+                <i class="bi bi-check2-circle text-white fs-4"></i>
+              </span>
+            </button>
+          </div>
+          <!--admin config buttons-->
+          <div class=" d-flex justify-content-around align-items-center" *ngIf="status === 'pending'">
+            <!--delete button-->
+            <i class="bi bi-trash3-fill btn text-danger fs-4" (click)="setSelectedExam(item._id, 'delete')" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+            <!--edit button-->
+            <i class="bi bi-wrench-adjustable btn text-white fs-4" [routerLink]="['/main/addExam' , item._id]"></i>
+            <!--info button popover-->
+            <i type="button" class="bi bi-info-circle-fill text-warning fs-4 "  tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" [attr.data-bs-content]="setPopoverContent(item)"></i>
+          </div>
+        </div>
+
+      </div>
+
+      <!--loading spinner-->
+      <div class="d-flex justify-content-center">
+        <app-loader *ngIf="loading"></app-loader>
+      </div>
+      
+      <!--error message-->
+      <div *ngIf="exams.length === 0 && !loading" class="alert alert-danger text-center" role="alert">
+        No exams found.
+      </div>
+    
+
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5 text-dark text-center" id="exampleModalLabel">{{ isDeleteAction ? 'DeleteExam' : (status == 'accepted' ? 'PendExam' : 'Accep Exam') }}</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-dark">
+              {{ isDeleteAction ? 'Are you sure you want to delete this exam?' : (status == 'accepted' ? 'Are you sure you want to pend this exam?' : 'Are you sure you want to accept this exam?') }}
+              
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
+              <button type="button" class="btn btn-success" data-bs-dismiss="modal"
+                (click)="isDeleteAction ? confirmDeleteExam() : confirmAcceptExam()">
+                Yes
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+</div>

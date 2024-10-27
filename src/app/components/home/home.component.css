@@ -1,0 +1,47 @@
+.bgFix{
+    background-image: url('../../../assets/assets/images/bgFix.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    overflow-x: hidden;
+    }
+
+
+/*animation*/
+@keyframes slideInFromBottom {
+    0% {
+            opacity: 0;
+            transform: translateY(30%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    }
+    
+.iset-text, .img-fluid {
+    animation: slideInFromBottom 1s ease-out;
+}
+
+.isetCh{
+    overflow-y: hidden;
+}
+/*------------------*/
+
+
+.logo-float {
+    position: relative; /* Required for positioning */
+    animation: float 2s ease-in-out infinite; /* Adjust duration as needed */
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0); /* Start at original position */
+    }
+    50% {
+        transform: translateY(-10px); /* Move up slightly */
+    }
+    100% {
+        transform: translateY(0); /* Return to original position */
+    }
+}

@@ -10,34 +10,48 @@ export class InViewDirective implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.initObserver();
+    window.addEventListener('scroll', this.onScroll); // Add scroll event listener
   }
 
   private initObserver() {
-    // Définir les options de l'observer
+    // Define options for the observer
     const options = {
       root: null,
-      threshold: 0.1
+      threshold: 0.5 // Adjust this value for smoother animation triggering
     };
 
-    // Callback de l'observer
+    // Callback for the observer
     this.observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          this.renderer.addClass(this.el.nativeElement, 'show'); // Ajoute la classe d'animation
+          // Add a class for animation
+          this.renderer.addClass(this.el.nativeElement, 'show');
         } else {
-          this.renderer.removeClass(this.el.nativeElement, 'show'); // Retire la classe d'animation
+          // Remove the animation class
+          this.renderer.removeClass(this.el.nativeElement, 'show');
         }
       });
     }, options);
 
-    // Observer l'élément
+    // Observe the element
     this.observer.observe(this.el.nativeElement);
   }
 
+  private onScroll = () => {
+    const rect = this.el.nativeElement.getBoundingClientRect();
+    // Check if the element is in view
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      this.renderer.addClass(this.el.nativeElement, 'show');
+    } else {
+      this.renderer.removeClass(this.el.nativeElement, 'show');
+    }
+  };
+
   ngOnDestroy() {
-    // Déconnecter l'observer lorsque la directive est détruite
+    // Disconnect the observer when the directive is destroyed
     if (this.observer) {
       this.observer.disconnect();
     }
+    window.removeEventListener('scroll', this.onScroll); // Clean up the scroll event listener
   }
 }

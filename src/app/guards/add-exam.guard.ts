@@ -14,7 +14,7 @@ export const addExamGuard: CanActivateFn = (route, state) => {
       if (isLoggedIn) {
         return true;  
       } else {
-        router.navigate(['/login']);  
+        router.navigate(['/main/login']);  
         return false;
       }
     }),

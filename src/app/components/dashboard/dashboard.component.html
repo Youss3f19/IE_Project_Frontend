@@ -1,0 +1,76 @@
+    <div class="wrapper">
+      <aside id="sidebar" class="js-sidebar" [ngClass]="{'collapsed': isExpanded('sidebar')}" >
+        <div class="h-100">
+          <div class="sidebar-logo">
+            <a href="#">Isetxams</a>
+          </div>
+          <ul class="sidebar-nav">
+            <li class="sidebar-header">Admin Elements</li>
+            <li class="sidebar-item">
+              <a  class="sidebar-link" >
+                <i class="fa-solid fa-list pe-2"></i>
+                Dashboard
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a  class="sidebar-link" (click)="toggleDropdown('pages')">
+                <i class="bi bi-caret-down-fill"></i>Exams
+              </a>
+              <ul class="sidebar-dropdown list-unstyled collapse" [ngClass]="{'show': isExpanded('pages')}">
+                <li class="sidebar-item"><a href="#" class="sidebar-link" [routerLink]="['exams/accepted']">Accepted Exams</a></li>
+                <li class="sidebar-item"><a href="#" class="sidebar-link" [routerLink]="['exams/pending']">Pending Exams</a></li>
+              </ul>
+            </li>
+         
+            <li class="sidebar-item">
+                <a  class="sidebar-link" (click)="toggleDropdown('users')">
+                  <i class="bi bi-caret-down-fill"></i>                
+                  Users
+                </a>
+                <ul class="sidebar-dropdown list-unstyled collapse" [ngClass]="{'show': isExpanded('users')}">
+                  <li class="sidebar-item"><a href="#" class="sidebar-link">All Users</a></li>
+                  <li class="sidebar-item"><a href="#" class="sidebar-link">Activated Account</a></li>
+                  <li class="sidebar-item"><a href="#" class="sidebar-link">Inactivated Account</a></li>
+                </ul>
+              </li>
+            <li class="sidebar-header btn btn-link text-decoration-none text-danger fs-5" [routerLink]="['/main/home']" ><i class="bi bi-box-arrow-left"></i> Exit</li>
+
+          </ul>
+        </div>
+      </aside>
+      <div class="main bg-dark">
+        <nav class="navbar navbar-expand px-3 border-bottom">
+          <button class="btn bg-light" id="sidebar-toggle" (click)="toggleSidebar()" type="button">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="navbar-collapse navbar">
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <button class="btn btn-danger " (click)="logout()">Logout</button>
+
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <main class="content px-3 py-2 bg-dark">
+          <div class="container-fluid">
+            <router-outlet></router-outlet>
+          </div>
+        </main>
+        <footer class="footer">
+          <div class="container-fluid">
+            <div class="row text-muted">
+              <div class="col-6 text-start">
+                <p class="mb-0">
+                  <a href="#" class="text-muted">
+                    <strong>IsetExams</strong>
+                  </a>
+                </p>
+              </div>
+            
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+  
